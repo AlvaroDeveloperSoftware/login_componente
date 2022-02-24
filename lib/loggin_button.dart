@@ -87,20 +87,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ));
   }
 
-  // Widget _loginButton() {
-  //   return RawMaterialButton(
-  //     onPressed: () {
-  //       // devolverá true si el formulario es válido, o falso si
-  //       // el formulario no es válido.
-  //       if (_formKey.currentState!.validate()) {
-  //         // Si el formulario es válido, queremos mostrar un Snackbar
-  //         Scaffold.of(context)
-  //             .showSnackBar(const SnackBar(content: Text('Login correcto')));
-  //       }
-  //     },
-  //     child: const Text('Login'),
-  //   );
-  // }
   String _validarEmail(String value) {
   String correo = "usuario@gmail.com";
 
