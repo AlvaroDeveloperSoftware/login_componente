@@ -74,10 +74,10 @@ class LoginButton extends StatelessWidget {
     );
   }
 
-//Método que devuelve un Padding, con el TextField del campo email.
+//Método que devuelve un Container, con el TextField del campo email.
   Widget _emailInput() {
     //Devolverá un padding.
-    return Padding(
+    return Container(
       //Se le asigna un padding para todo de 16 px.
         padding: const EdgeInsets.all(16.0),
         //Tiene un nodo hijo, de tipo TextFormField, indicando
@@ -92,10 +92,10 @@ class LoginButton extends StatelessWidget {
             decoration: const InputDecoration(hintText: 'Email', label: Text('Email')),
             ));
   }
-//Método que devuelve un Padding, con el TextField del campo password.
+//Método que devuelve un Container, con el TextField del campo password.
   Widget _passwordInput() {
     //Lo mismo pero orientado al campo contraseña.
-    return Padding(
+    return Container(
         padding: const EdgeInsets.all(16.0),
         child: TextFormField(
           onChanged: ((value) => pass = value),

@@ -4,7 +4,7 @@ import 'loggin_button.dart';
 // Método main de la aplicación
 void main() => runApp(const MyApp());
 
-// Clase a lanzar por el método main, se encarga de la barra superior con el título
+// Clase a lanzar por el método main.
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
