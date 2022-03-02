@@ -46,8 +46,8 @@ class LoginButton extends StatelessWidget {
             //que contendrá varios hijos en un array de Widget.
             child: Column(children: <Widget>[
               //Se inserta una imagen
-              Image.asset('assets/images/login_image.png',
-                    width: 440, height: 280),
+              // Image.asset('assets/images/login_image.png',
+              //       width: 440, height: 280),
               //Se asigna un padding superior de 20px.
               const Padding(padding: EdgeInsets.only(top: 20)),
               //Se llaman a los widgets del formulario.
