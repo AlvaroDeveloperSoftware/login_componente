@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
-//Clase LoginButton que hereda de la clase StatelessWidget, 
+import 'package:login/usuario_view.dart';
+
+//Clase LoginButton que hereda de la clase StatelessWidget,
 //abarcará toda la interfaz del login. StatelessWidget, es
 //un widget que no cambia, en este caso podemos utilizar dicha
 //clase, si por ejemplo fuera un contador utilizariamos
 //StatefulWidget, ya que son valores que cambian dinámicamente.
 class LoginButton extends StatelessWidget {
-  LoginButton({Key? key, @required this.onPressed}) : super(key: key);
-   
- //Variable final que recogerá la clave del formulario, para toda la
- //aplicación
+  LoginButton(
+      {Key? key, @required this.onPressed, @required this.registerOnPressed})
+      : super(key: key);
+
+  //Variable final que recogerá la clave del formulario, para toda la
+  //aplicación
   final formKey = GlobalKey<FormState>();
   //Variable de tipo String que permitirá validar el campo email
   //del formulario.
   static String? email;
   //Variable pass que permitirá validar el campo password del formulario.
+
   static String? pass;
   //Boton que validará el formulario.
   final GestureTapCallback? onPressed;
+  final GestureTapCallback? registerOnPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +37,7 @@ class LoginButton extends StatelessWidget {
       ),
       //Cuerpo de la interfaz, a la cual se le pasa un padding.
       body: Padding(
-        //Propiedad padding, se le indicará un padding para todo de 20 px, 
+        //Propiedad padding, se le indicará un padding para todo de 20 px,
         //el padding se aplica con la clase EdgeInsets.
         padding: const EdgeInsets.all(20.0),
         //Hijo del cuerpo, el cual será un formulario.
@@ -42,35 +48,48 @@ class LoginButton extends StatelessWidget {
           //permitirá que el tamaño de la aplicación se adapte en función
           //de la interactividad de los usuarios con el formulario.
           child: SingleChildScrollView(
-            //Hijo del widget SingleChildScrollView, será una columna, 
+            //Hijo del widget SingleChildScrollView, será una columna,
             //que contendrá varios hijos en un array de Widget.
-            child: Column(children: <Widget>[
-              //Se inserta una imagen
-               Image.asset('assets/images/login_image.png',
-                     width: 440, height: 280),
-              //Se asigna un padding superior de 20px.
-              const Padding(padding: EdgeInsets.only(top: 20)),
-              //Se llaman a los widgets del formulario.
-              _emailInput(),
-              _passwordInput(),
-              //Se hace otro padding, en este caso simétrico de 10 px.
-              const Padding(padding: EdgeInsets.symmetric(vertical: 10.0),
-              ),
-              //Se usa el widget MaterialButton, indicando un botón.
-              MaterialButton(
-                //Propiedad color, a la que se le asigna el color blanco.
-                color: Colors.white,
-                //Propiedad child, que tendrá un Text, con una cadena para
-                //el botón.
-                child: const Text('Entrar'),
-                //Se utiliza la función onPressed que hemos creado y se le pasa
-                //a la propiedad onPressed.
-                onPressed: onPressed),
-            ],
+            child: Column(
+              children: <Widget>[
+                //Se inserta una imagen
+                Image.asset('assets/images/login_image.png',
+                    width: 440, height: 280),
+                //Se asigna un padding superior de 20px.
+                const Padding(padding: EdgeInsets.only(top: 20)),
+                //Se llaman a los widgets del formulario.
+                _emailInput(),
+                _passwordInput(),
+                //Se hace otro padding, en este caso simétrico de 10 px.
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                ),
+                //Se usa el widget MaterialButton, indicando el botón.
+                MaterialButton(
+                    //Propiedad color, a la que se le asigna el color blanco.
+                    color: Colors.white,
+                    //Propiedad child, que tendrá un Text, con una cadena para
+                    //el botón.
+                    child: const Text('Registrar'),
+                    //Se utiliza la función onPressed que hemos creado y se le pasa
+                    //a la propiedad onPressed.
+                    onPressed: registerOnPressed),
+                //Se usa el widget MaterialButton, indicando un botón.
+                Padding(padding: EdgeInsets.symmetric(vertical: 4.0)),
+                MaterialButton(
+                    //Propiedad color, a la que se le asigna el color blanco.
+                    color: Colors.red,
+                    //Propiedad child, que tendrá un Text, con una cadena para
+                    //el botón.
+                    child: const Text('Entrar'),
+                    //Se utiliza la función onPressed que hemos creado y se le pasa
+                    //a la propiedad onPressed.
+                    onPressed: onPressed),
+              ],
             ),
+          ),
         ),
       ),
-       ),
     );
   }
 
@@ -78,7 +97,7 @@ class LoginButton extends StatelessWidget {
   Widget _emailInput() {
     //Devolverá un padding.
     return Container(
-      //Se le asigna un padding para todo de 16 px.
+        //Se le asigna un padding para todo de 16 px.
         padding: const EdgeInsets.all(16.0),
         //Tiene un nodo hijo, de tipo TextFormField, indicando
         //que se trata de un campo de tipo formulario.
@@ -89,9 +108,11 @@ class LoginButton extends StatelessWidget {
           //InputDecoration, se le indica la propiedad hintText y se le pasará
           //una indicación de que se trata de Email, y se le indica
           //la propiedad label para asignar una etiqueta que es Email.
-            decoration: const InputDecoration(hintText: 'Email', label: Text('Email')),
-            ));
+          decoration:
+              const InputDecoration(hintText: 'Email', label: Text('Email')),
+        ));
   }
+
 //Método que devuelve un Container, con el TextField del campo password.
   Widget _passwordInput() {
     //Lo mismo pero orientado al campo contraseña.
